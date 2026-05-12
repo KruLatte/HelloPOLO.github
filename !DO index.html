@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinguaSpark AI Learning Platform</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background:#f4f9ff;
+    color:#1e293b;
+    overflow-x:hidden;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+    color:#2563eb;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#334155;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#2563eb;
+}
+
+.nav-btn{
+    padding:12px 24px;
+    border:none;
+    border-radius:40px;
+    background:#2563eb;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.nav-btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:120px 8% 80px;
+    gap:50px;
+}
+
+.hero-text{
+    flex:1;
+}
+
+.hero-text h1{
+    font-size:68px;
+    line-height:1.1;
+    margin-bottom:25px;
+}
+
+.hero-text h1 span{
+    color:#2563eb;
+}
+
+.hero-text p{
+    font-size:18px;
+    line-height:1.9;
+    color:#64748b;
+    margin-bottom:35px;
+    max-width:600px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.primary-btn{
+    padding:16px 32px;
+    border:none;
+    border-radius:40px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.primary-btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-3px);
+}
+
+.secondary-btn{
+    padding:16px 32px;
+    border-radius:40px;
+    border:2px solid #2563eb;
+    background:white;
+    color:#2563eb;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.secondary-btn:hover{
+    background:#2563eb;
+    color:white;
+}
+
+.hero-card{
+    flex:1;
+    background:white;
+    padding:35px;
+    border-radius:35px;
+    box-shadow:0 20px 50px rgba(37,99,235,0.12);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.mini-card{
+    background:#eff6ff;
+    padding:25px;
+    border-radius:25px;
+    transition:0.3s;
+}
+
+.mini-card:hover{
+    transform:translateY(-5px);
+}
+
+.emoji{
+    font-size:40px;
+}
+
+.mini-card h3{
+    margin:10px 0;
+}
+
+/* SECTION */
+
+.section{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#64748b;
+    font-size:18px;
+}
+
+/* FEATURES */
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.feature-card{
+    background:white;
+    padding:40px 30px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-8px);
+}
+
+.feature-card .icon{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.feature-card h3{
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.feature-card p{
+    line-height:1.8;
+    color:#64748b;
+}
+
+/* AI SECTION */
+
+.ai-section{
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
+    border-radius:40px;
+    padding:70px;
+    color:white;
+}
+
+.ai-top{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.ai-top h2{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.ai-top p{
+    max-width:850px;
+    margin:auto;
+    line-height:1.9;
+    font-size:18px;
+    color:#dbeafe;
+}
+
+.ai-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.ai-card{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.15);
+    padding:35px;
+    border-radius:30px;
+}
+
+.ai-card h3{
+    margin:20px 0;
+    font-size:24px;
+}
+
+.ai-card p{
+    line-height:1.8;
+    color:#e0f2fe;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:60px;
+}
+
+.dashboard-card{
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.dashboard-card h3{
+    font-size:42px;
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+/* CTA */
+
+.cta{
+    padding:100px 8%;
+}
+
+.cta-box{
+    background:white;
+    border-radius:40px;
+    padding:80px 40px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.05);
+}
+
+.cta-box h2{
+    font-size:52px;
+    margin-bottom:20px;
+}
+
+.cta-box p{
+    color:#64748b;
+    font-size:18px;
+    margin-bottom:35px;
+}
+
+/* FOOTER */
+
+footer{
+    background:white;
+    padding:40px;
+    text-align:center;
+    color:#64748b;
+    border-top:1px solid rgba(0,0,0,0.05);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-text h1{
+        font-size:48px;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-title h2,
+    .ai-top h2,
+    .cta-box h2{
+        font-size:36px;
+    }
+
+    .ai-section{
+        padding:40px 25px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">LinguaSpark</div>
+
+    <ul>
+        <li><a href="#learning">Learning</a></li>
+        <li><a href="#ai">AI System</a></li>
+        <li><a href="#dashboard">Analytics</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="nav-btn">Start Learning</button>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Learn Languages
+            <span>With AI Power</span>
+        </h1>
+
+        <p>
+            แพลตฟอร์มเรียนภาษายุคใหม่สำหรับเด็กและวัยรุ่น
+            ที่ผสาน Generative AI เพื่อช่วยวิเคราะห์การเรียนรู้
+            ประเมินผลเชิงคุณภาพและเชิงปริมาณ
+            พร้อมระบบเกมและแบบทดสอบแบบ Interactive
+        </p>
+
+        <div class="hero-buttons">
+            <button class="primary-btn">เริ่มเรียนฟรี</button>
+            <button class="secondary-btn">ดูระบบ AI</button>
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+
+        <div class="grid">
+
+            <div class="mini-card">
+                <div class="emoji">🎧</div>
+                <h3>Listening</h3>
+                <p>ฝึกฟังจากเสียงเจ้าของภาษา</p>
+            </div>
+
+            <div class="mini-card">
+                <div class="emoji">🗣️</div>
+                <h3>Speaking</h3>
+                <p>AI วิเคราะห์การออกเสียง</p>
+            </div>
+
+            <div class="mini-card">
+                <div class="emoji">📖</div>
+                <h3>Reading</h3>
+                <p>อ่านบทความพร้อมคำศัพท์</p>
+            </div>
+
+            <div class="mini-card">
+                <div class="emoji">✍️</div>
+                <h3>Writing</h3>
+                <p>AI ตรวจ Grammar และ Style</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- LEARNING -->
+
+<section class="section" id="learning">
+
+    <div class="section-title">
+        <h2>Learning Experiences</h2>
+        <p>เรียนภาษาอย่างสนุก ผ่านระบบ Interactive</p>
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <div class="icon">🎮</div>
+            <h3>Language Games</h3>
+            <p>
+                เกมภาษาแบบ Gamification
+                ช่วยเพิ่มแรงจูงใจและทำให้การเรียนไม่น่าเบื่อ
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">📝</div>
+            <h3>Interactive Quiz</h3>
+            <p>
+                แบบทดสอบที่วิเคราะห์ผลการเรียนแบบ Real-Time
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">🤖</div>
+            <h3>AI Tutor</h3>
+            <p>
+                AI ผู้ช่วยสอนที่แนะนำบทเรียนเฉพาะบุคคล
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- AI SECTION -->
+
+<section class="section" id="ai">
+
+    <div class="ai-section">
+
+        <div class="ai-top">
+
+            <h2>Generative AI Assessment</h2>
+
+            <p>
+                ระบบ Generative AI ของ LinguaSpark
+                สามารถวิเคราะห์พัฒนาการทางภาษาได้ทั้งเชิงคุณภาพ
+                และเชิงปริมาณ เพื่อช่วยให้ผู้เรียนเห็นจุดแข็ง
+                จุดที่ต้องพัฒนา และเส้นทางการเรียนรู้ที่เหมาะสม
+            </p>
+
+        </div>
+
+        <div class="ai-grid">
+
+            <div class="ai-card">
+                <div class="emoji">📊</div>
+
+                <h3>Quantitative Analysis</h3>
+
+                <p>
+                    วิเคราะห์คะแนนเชิงตัวเลข เช่น
+                    ความแม่นยำทาง Grammar,
+                    คะแนน Vocabulary,
+                    ระดับการอ่าน,
+                    ความเร็วในการตอบคำถาม
+                    และพัฒนาการรายสัปดาห์
+                </p>
+            </div>
+
+            <div class="ai-card">
+                <div class="emoji">🧠</div>
+
+                <h3>Qualitative Analysis</h3>
+
+                <p>
+                    AI วิเคราะห์คุณภาพการสื่อสาร เช่น
+                    ความมั่นใจในการพูด,
+                    ความเป็นธรรมชาติของภาษา,
+                    ความคิดสร้างสรรค์ในการเขียน
+                    และรูปแบบการใช้ภาษา
+                </p>
+            </div>
+
+            <div class="ai-card">
+                <div class="emoji">🎯</div>
+
+                <h3>Personalized Recommendation</h3>
+
+                <p>
+                    AI สร้างเส้นทางการเรียนรู้เฉพาะบุคคล
+                    พร้อมแนะนำบทเรียน เกม และแบบฝึกหัด
+                    ที่เหมาะสมกับระดับผู้เรียนแต่ละคน
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DASHBOARD -->
+
+<section class="section" id="dashboard">
+
+    <div class="section-title">
+        <h2>AI Learning Dashboard</h2>
+        <p>ติดตามพัฒนาการแบบ Real-Time</p>
+    </div>
+
+    <div class="dashboard">
+
+        <div class="dashboard-card">
+            <h3>92%</h3>
+            <p>Grammar Accuracy</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>85%</h3>
+            <p>Speaking Confidence</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>120+</h3>
+            <p>Vocabulary Learned</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>18h</h3>
+            <p>Learning Time</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <div class="cta-box">
+
+        <h2>Start Your AI Learning Journey 🚀</h2>
+
+        <p>
+            เรียนภาษาแบบใหม่ด้วยพลังของ Generative AI
+            ที่ช่วยวิเคราะห์ พัฒนา และแนะนำการเรียนรู้แบบเฉพาะบุคคล
+        </p>
+
+        <button class="primary-btn">
+            ทดลองใช้งานฟรี
+        </button>
+
+    </div>
+
+</section>
+<a href="https://github.com/kittisak" target="_blank">
+    <button class="primary-btn">
+        My GitHub
+    </button>
+</a>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+    <p>
+        © 2026 LinguaSpark AI Learning Platform
+        | Smart Language Learning for Future Students
+    </p>
+
+</footer>
+
+</body>
+</html>
